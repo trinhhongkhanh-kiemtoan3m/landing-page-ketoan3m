@@ -5,6 +5,7 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Editorial Intelligence | AI for the Sovereign Architect</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -78,6 +79,18 @@
         }
         .tonal-shift-bg { background-color: rgba(247, 249, 251, 0.7); }
         .glass-card { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.7); }
+        
+        /* Chatbot Markdown Styles */
+        .chat-markdown p { line-height: 1.6; margin-bottom: 0.5rem; }
+        .chat-markdown p:last-child { margin-bottom: 0; }
+        .chat-markdown ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+        .chat-markdown ol { list-style-type: decimal; margin-left: 1.5rem; margin-bottom: 0.5rem; }
+        .chat-markdown li { margin-bottom: 0.25rem; }
+        .chat-markdown strong { font-weight: bold; color: #004e39; }
+        .chat-markdown code { background-color: #191c1e; color: #a6f2d1; font-family: 'Consolas', 'Fira Code', monospace; padding: 0.125rem 0.25rem; border-radius: 0.25rem; font-size: 0.875em; }
+        .chat-markdown blockquote { border-left: 3px solid #76c0a1; margin-left: 0; padding-left: 1rem; color: #57657b; }
+        .chat-markdown pre { background-color: #191c1e; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin-bottom: 0.5rem; }
+        .chat-markdown pre code { background-color: transparent; color: inherit; padding: 0; }
     </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
@@ -324,4 +337,217 @@
 </div>
 </div>
 </footer>
+
+<!-- Floating Chatbot Window -->
+<div id="chatbot-container" class="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] z-50 flex flex-col transition-all duration-300 transform translate-y-4 opacity-0 pointer-events-none hidden">
+    <!-- Chat Window Content: glassmorphism, thin border, shadow-2xl -->
+    <div class="glass-card border-[0.5px] border-outline-variant/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] max-h-[75vh]">
+        
+        <!-- Header Chat Window -->
+        <div class="bg-primary/95 text-on-primary px-4 py-3 flex justify-between items-center backdrop-blur-md">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-xs shadow-inner">AI</div>
+                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 border-2 border-primary rounded-full animate-pulse"></span>
+                </div>
+                <div>
+                    <h4 class="font-headline font-semibold text-sm">Trợ Lý Ảo EI</h4>
+                    <p class="text-[10px] text-primary-fixed-dim/80">Online</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-1">
+                <!-- Nút Refresh -->
+                <button id="chatbot-refresh" class="p-1.5 hover:bg-white/10 rounded-full transition-colors group">
+                    <span class="material-symbols-outlined text-sm transition-transform duration-500 origin-center">refresh</span>
+                </button>
+                <!-- Nút Close -->
+                <button id="chatbot-close" class="p-1.5 hover:bg-white/10 rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-sm">close</span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Chat Messages Zone -->
+        <div id="chatbot-messages" class="flex-1 overflow-y-auto p-4 space-y-4 bg-surface/50 scroll-smooth">
+            <!-- Messages will be injected here -->
+        </div>
+
+        <!-- Chat Input Zone -->
+        <div class="p-3 bg-white/80 backdrop-blur-sm border-t border-outline-variant/20 flex items-center gap-2">
+            <input type="text" id="chatbot-input" class="flex-1 bg-surface-container-low border-none focus:ring-1 focus:ring-primary rounded-full px-4 py-2.5 text-sm text-on-surface shadow-inner outline-none" placeholder="Hỏi AI bất kỳ điều gì..." autocomplete="off" />
+            <button id="chatbot-send" class="w-10 h-10 rounded-full bg-primary text-white flex items-center justify-center hover:bg-primary/90 transition-all hover:scale-105 shadow-md shrink-0">
+                <span class="material-symbols-outlined text-[18px]">send</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Floating Toggle Button -->
+<button id="chatbot-toggle" class="fixed bottom-6 right-6 w-14 h-14 bg-primary text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform z-40 group border border-outline-variant/20">
+    <span class="material-symbols-outlined text-2xl group-hover:hidden block">chat</span>
+    <span class="material-symbols-outlined text-2xl group-hover:block hidden">smart_toy</span>
+</button>
+
+<style>
+    /* Utility class for refresh icon rotation */
+    .rotate-180-anim {
+        transform: rotate(180deg);
+    }
+    
+    /* Typing Indicator Animation CSS */
+    .typing-indicator span {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background-color: #004e39;
+        border-radius: 50%;
+        margin: 0 2px;
+        animation: typing 1.4s infinite ease-in-out both;
+    }
+    .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+    .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+    @keyframes typing {
+        0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+        40% { transform: scale(1); opacity: 1; }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggleBtn = document.getElementById('chatbot-toggle');
+        const container = document.getElementById('chatbot-container');
+        const closeBtn = document.getElementById('chatbot-close');
+        const refreshBtn = document.getElementById('chatbot-refresh');
+        const messagesEl = document.getElementById('chatbot-messages');
+        const inputEl = document.getElementById('chatbot-input');
+        const sendBtn = document.getElementById('chatbot-send');
+
+        const DEFAULT_GREETING = "Xin chào! Tôi là Trợ Lý Ảo AI của **Editorial Intelligence**. Tôi có thể hỗ trợ gì cho quá trình phân tích chiến lược doanh nghiệp của bạn?";
+
+        function createMessageHTML(content, isUser = false, isMarkdown = true) {
+            const wrapper = document.createElement('div');
+            wrapper.className = \`flex \${isUser ? 'justify-end' : 'justify-start'} animate-fade-in\`;
+            wrapper.style.animation = "fadeIn 0.3s ease-out forwards";
+            
+            const msgBubble = document.createElement('div');
+            msgBubble.className = \`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed \${isUser ? 'bg-primary text-white rounded-br-sm shadow-md' : 'bg-white border border-outline-variant/20 text-on-surface rounded-bl-sm chat-markdown shadow-sm'}\`;
+            
+            if (isMarkdown && !isUser) {
+                // Tích hợp marked.js cho phản hồi từ bot
+                msgBubble.innerHTML = marked.parse(content);
+            } else {
+                msgBubble.textContent = content;
+            }
+
+            wrapper.appendChild(msgBubble);
+            return wrapper;
+        }
+
+        function showTypingIndicator() {
+            const wrapper = document.createElement('div');
+            wrapper.id = 'typing-indicator-wrapper';
+            wrapper.className = 'flex justify-start animate-fade-in';
+            wrapper.style.animation = "fadeIn 0.3s ease-out forwards";
+            wrapper.innerHTML = \`<div class="max-w-[85%] rounded-2xl rounded-bl-sm px-4 py-3 bg-white border border-outline-variant/20 text-on-surface shadow-sm typing-indicator flex items-center h-10">
+                <span></span><span></span><span></span>
+            </div>\`;
+            messagesEl.appendChild(wrapper);
+            scrollToBottom();
+        }
+
+        function removeTypingIndicator() {
+            const el = document.getElementById('typing-indicator-wrapper');
+            if (el) el.remove();
+        }
+
+        function scrollToBottom() {
+            messagesEl.scrollTop = messagesEl.scrollHeight;
+        }
+
+        // Khởi tạo Chatbot
+        function initChat() {
+            messagesEl.innerHTML = '';
+            messagesEl.appendChild(createMessageHTML(DEFAULT_GREETING, false, true));
+        }
+
+        // Bật/tắt giao diện chat
+        function toggleChat() {
+            if (container.classList.contains('hidden')) {
+                container.classList.remove('hidden');
+                // Allow browser to render display:block before adding opacity classes
+                requestAnimationFrame(() => {
+                    container.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                    container.classList.add('opacity-100', 'translate-y-0');
+                });
+            } else {
+                container.classList.remove('opacity-100', 'translate-y-0');
+                container.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                setTimeout(() => {
+                    container.classList.add('hidden');
+                }, 300); // Đợi CSS transition kết thúc
+            }
+        }
+
+        toggleBtn.addEventListener('click', toggleChat);
+        closeBtn.addEventListener('click', toggleChat);
+
+        // Logic Nút Refresh
+        refreshBtn.addEventListener('click', () => {
+            const icon = refreshBtn.querySelector('span');
+            // Thêm hiệu ứng xoay icon refresh
+            icon.classList.add('rotate-180-anim');
+            
+            // Xóa toàn bộ lịch sử chat bằng cách gán rỗng
+            messagesEl.innerHTML = '';
+            
+            // In lại câu thiết lập chào mặc định ban đầu
+            initChat();
+            
+            // Gỡ hiệu ứng xoay của icon sau đúng 500ms
+            setTimeout(() => {
+                icon.classList.remove('rotate-180-anim');
+            }, 500);
+        });
+
+        // Xử lý gửi tin nhắn (Hiệu ứng typing placeholder Demo)
+        function handleSend() {
+            const text = inputEl.value.trim();
+            if (!text) return;
+
+            // Render text của người dùng
+            messagesEl.appendChild(createMessageHTML(text, true, false));
+            inputEl.value = '';
+            scrollToBottom();
+
+            // Hiệu ứng Typing
+            showTypingIndicator();
+
+            // Giả lập bot phản hồi bằng Markdown
+            setTimeout(() => {
+                removeTypingIndicator();
+                const demoResponse = 'Dưới đây là một số thông tin bạn đã yêu cầu:\\n\\n- **Tính Năng Chính:** Tối ưu hóa hệ thống bằng AI.\\n- **Bảo Mật:** Mã hóa chuẩn \`AES-256\`.\\n\\n> Editorial Intelligence luôn đồng hành cùng bạn.\\n\\nVui lòng liên hệ bộ phận hỗ trợ nếu cần thêm chi tiết.';
+                messagesEl.appendChild(createMessageHTML(demoResponse, false, true));
+                scrollToBottom();
+            }, 1500);
+        }
+
+        sendBtn.addEventListener('click', handleSend);
+        inputEl.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') handleSend();
+        });
+
+        // Hiển thị sẵn lời chào
+        initChat();
+    });
+</script>
+
+<style>
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    .animate-fade-in {
+        animation: fadeIn 0.3s ease-out forwards;
+    }
+</style>
 </body></html>

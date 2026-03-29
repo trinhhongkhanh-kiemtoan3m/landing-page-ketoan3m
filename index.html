@@ -339,7 +339,7 @@
 </footer>
 
 <!-- Floating Chatbot Window -->
-<div id="chatbot-container" class="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] z-50 flex flex-col hidden chatbot-transition">
+<div id="chatbot-container" class="fixed bottom-24 right-6 w-96 max-w-[calc(100vw-3rem)] z-50 flex flex-col chatbot-transition">
     <!-- Chat Window Content: glassmorphism, thin border, shadow-2xl -->
     <div class="glass-card border-[0.5px] border-outline-variant/30 rounded-2xl shadow-2xl overflow-hidden flex flex-col h-[500px] max-h-[75vh]">
         
@@ -416,12 +416,14 @@
         opacity: 0;
         transform: translateY(20px);
         pointer-events: none;
-        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+        visibility: hidden;
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s ease-out;
     }
     .chatbot-transition.active {
-        opacity: 1;
-        transform: translateY(0);
-        pointer-events: auto;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: auto !important;
+        visibility: visible !important;
     }
 </style>
 
@@ -485,18 +487,7 @@
 
         // Bật/tắt giao diện chat
         function toggleChat() {
-            if (container.classList.contains('hidden')) {
-                container.classList.remove('hidden');
-                // Khởi động transition bằng class
-                setTimeout(() => {
-                    container.classList.add('active');
-                }, 10);
-            } else {
-                container.classList.remove('active');
-                setTimeout(() => {
-                    container.classList.add('hidden');
-                }, 300); // Đợi CSS transition kết thúc
-            }
+            container.classList.toggle('active');
         }
 
         toggleBtn.addEventListener('click', toggleChat);

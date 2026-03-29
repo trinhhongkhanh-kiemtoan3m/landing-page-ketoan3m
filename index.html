@@ -441,7 +441,7 @@
 
         let SYSTEM_PROMPT = "";
         let chatHistory = [];
-        const OPENROUTER_API_KEY = "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";
+        const CUSTOM_API_KEY = "sk-4bd27113b7dc78d1-lh6jld-f4f9c69f";
 
         // Tải dữ liệu kiến thức (Knowledge Base)
         async function loadSystemPrompt() {
@@ -566,16 +566,16 @@ Quy tắc giao tiếp bắt buộc:
                     ? [{ role: "system", content: SYSTEM_PROMPT }, ...chatHistory]
                     : [...chatHistory];
 
-                const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+                const response = await fetch("https://9router.vuhai.io.vn/v1/chat/completions", {
                     method: "POST",
                     headers: {
-                        "Authorization": `Bearer ${OPENROUTER_API_KEY}`,
+                        "Authorization": `Bearer ${CUSTOM_API_KEY}`,
                         "Content-Type": "application/json",
                         "HTTP-Referer": window.location.href,
                         "X-Title": "EI Chatbot"
                     },
                     body: JSON.stringify({
-                        model: "z-ai/glm-4.5-air:free",
+                        model: "ces-chatbot-gpt-5.4",
                         messages: payloadMessages
                     })
                 });

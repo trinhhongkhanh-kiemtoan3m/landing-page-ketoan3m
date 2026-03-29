@@ -474,11 +474,11 @@ Quy tắc giao tiếp bắt buộc:
 
         function createMessageHTML(content, isUser = false, isMarkdown = true) {
             const wrapper = document.createElement('div');
-            wrapper.className = \`flex \${isUser ? 'justify-end' : 'justify-start'} animate-fade-in\`;
+            wrapper.className = `flex ${isUser ? 'justify-end' : 'justify-start'} animate-fade-in`;
             wrapper.style.animation = "fadeIn 0.3s ease-out forwards";
             
             const msgBubble = document.createElement('div');
-            msgBubble.className = \`max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed \${isUser ? 'bg-primary text-white rounded-br-sm shadow-md' : 'bg-white border border-outline-variant/20 text-on-surface rounded-bl-sm chat-markdown shadow-sm'}\`;
+            msgBubble.className = `max-w-[85%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${isUser ? 'bg-primary text-white rounded-br-sm shadow-md' : 'bg-white border border-outline-variant/20 text-on-surface rounded-bl-sm chat-markdown shadow-sm'}`;
             
             if (isMarkdown && !isUser) {
                 // Tích hợp marked.js cho phản hồi từ bot
@@ -496,9 +496,9 @@ Quy tắc giao tiếp bắt buộc:
             wrapper.id = 'typing-indicator-wrapper';
             wrapper.className = 'flex justify-start animate-fade-in';
             wrapper.style.animation = "fadeIn 0.3s ease-out forwards";
-            wrapper.innerHTML = \`<div class="max-w-[85%] rounded-2xl rounded-bl-sm px-4 py-3 bg-white border border-outline-variant/20 text-on-surface shadow-sm typing-indicator flex items-center h-10">
+            wrapper.innerHTML = `<div class="max-w-[85%] rounded-2xl rounded-bl-sm px-4 py-3 bg-white border border-outline-variant/20 text-on-surface shadow-sm typing-indicator flex items-center h-10">
                 <span></span><span></span><span></span>
-            </div>\`;
+            </div>`;
             messagesEl.appendChild(wrapper);
             scrollToBottom();
         }

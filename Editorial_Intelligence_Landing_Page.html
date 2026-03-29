@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Editorial Intelligence | AI for the Sovereign Architect</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&amp;family=Be+Vietnam+Pro:ital,wght@0,300;0,400;0,600;1,300&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed-variant": "#00513b",
+              "on-secondary-container": "#57657b",
+              "on-primary-fixed": "#002116",
+              "on-tertiary": "#ffffff",
+              "outline-variant": "#bfc9c3",
+              "on-secondary": "#ffffff",
+              "on-primary": "#ffffff",
+              "secondary": "#515f74",
+              "secondary-fixed-dim": "#b9c7e0",
+              "on-tertiary-container": "#ea9e93",
+              "on-error": "#ffffff",
+              "background": "#f7f9fb",
+              "inverse-surface": "#2d3133",
+              "on-background": "#191c1e",
+              "inverse-primary": "#8bd6b6",
+              "on-error-container": "#93000a",
+              "surface-container-lowest": "#ffffff",
+              "outline": "#707974",
+              "surface-container-highest": "#e0e3e5",
+              "on-primary-container": "#76c0a1",
+              "primary-fixed-dim": "#8bd6b6",
+              "error-container": "#ffdad6",
+              "primary-container": "#004e39",
+              "secondary-fixed": "#d5e3fd",
+              "on-tertiary-fixed": "#380d08",
+              "inverse-on-surface": "#eff1f3",
+              "tertiary-fixed": "#ffdad5",
+              "surface-container": "#eceef0",
+              "tertiary": "#4f1f19",
+              "on-tertiary-fixed-variant": "#6e372f",
+              "primary-fixed": "#a6f2d1",
+              "surface-container-high": "#e6e8ea",
+              "surface": "#f7f9fb",
+              "surface-tint": "#1b6b51",
+              "surface-bright": "#f7f9fb",
+              "tertiary-container": "#6b342d",
+              "error": "#ba1a1a",
+              "on-secondary-fixed-variant": "#3a485c",
+              "tertiary-fixed-dim": "#ffb4a9",
+              "surface-variant": "#e0e3e5",
+              "secondary-container": "#d5e3fd",
+              "on-secondary-fixed": "#0d1c2f",
+              "primary": "#003526",
+              "surface-container-low": "#f2f4f6",
+              "on-surface-variant": "#404944",
+              "surface-dim": "#d8dadc",
+              "on-surface": "#191c1e"
+            },
+            fontFamily: {
+              "headline": ["Manrope"],
+              "body": ["Be Vietnam Pro"],
+              "label": ["Be Vietnam Pro"]
+            },
+            borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .tonal-shift-bg { background-color: rgba(247, 249, 251, 0.7); }
+        .glass-card { backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.7); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl no-border tonal-shift-bg">
+<div class="flex justify-between items-center max-w-7xl mx-auto px-8 py-6">
+<div class="text-xl font-bold tracking-tighter text-emerald-900">Editorial Intelligence</div>
+<div class="hidden md:flex gap-10">
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-emerald-800/60 hover:text-emerald-900 transition-colors duration-300" href="#solutions">Solutions</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-emerald-800/60 hover:text-emerald-900 transition-colors duration-300" href="#expertise">Expertise</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-emerald-800/60 hover:text-emerald-900 transition-colors duration-300" href="#portfolio">Portfolio</a>
+<a class="font-manrope tracking-tight text-sm uppercase font-semibold text-emerald-800/60 hover:text-emerald-900 transition-colors duration-300" href="#contact">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2 text-sm font-semibold tracking-wide uppercase rounded-sm hover:opacity-90 transition-opacity">
+                Consultation
+            </button>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-24 overflow-hidden">
+<div class="max-w-7xl mx-auto px-8 w-full grid md:grid-cols-12 gap-12 items-center">
+<div class="md:col-span-8">
+<div class="inline-flex items-center gap-2 bg-primary-fixed text-on-primary-fixed px-3 py-1 rounded-full mb-8">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="text-xs font-bold tracking-widest uppercase">Verified AI Strategist</span>
+</div>
+<h1 class="font-headline text-5xl md:text-7xl font-extrabold text-primary tracking-tight leading-[1.1] mb-8">
+                        Kiến Trúc Sư <br/>
+<span class="text-on-primary-container">Tài Chính AI.</span>
+</h1>
+<p class="text-xl text-on-surface-variant max-w-2xl leading-relaxed mb-10">
+                        Nâng tầm doanh nghiệp của bạn bằng các giải pháp trí tuệ nhân tạo chuyên biệt cho lĩnh vực kế toán và tài chính. Độ chính xác tuyệt đối. Bảo mật tối đa. Hiệu suất vượt trội.
+                    </p>
+<div class="flex flex-wrap gap-6">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-sm font-bold flex items-center gap-3 hover:shadow-xl transition-all duration-300">
+                            Bắt đầu dự án
+                            <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<button class="border border-outline-variant/30 px-8 py-4 rounded-sm font-bold text-primary hover:bg-surface-container transition-colors">
+                            Tìm hiểu thêm
+                        </button>
+</div>
+</div>
+<div class="md:col-span-4 relative">
+<div class="aspect-[4/5] bg-surface-container rounded-sm overflow-hidden relative shadow-2xl">
+<img alt="Professional avatar" class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" data-alt="Modern professional portrait of a man in a dark suit against a minimalist light grey architectural background, soft cinematic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArGb7wUneGKN-8fpAD05vIPM9utpyVXbST1GWRNe_mfV5yfjmym82TI6hY8ic48o-vxUSt63Ccbrv7Paf2-2RdJdOQebZbWrgxTMzQtSLJPl4797O0HrS0Je3UOdkDnfvuO7oEpcoVyRU7J1nq9YU7k8MHJh-DZwzywUbxEz_OggyXPUk8vwy6STwRQhQm1x49h23P3R364J8eVnldMgX6OjMueF668E93hDiZa1hqgxJRGu3mS8NmHJvixSgD3-SQZyUqXBdoVU8"/>
+<div class="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-primary/80 to-transparent">
+<p class="text-white font-headline font-bold text-lg">Phan Hoàng Minh</p>
+<p class="text-emerald-200 text-xs uppercase tracking-widest">AI Solutions Specialist</p>
+</div>
+</div>
+<!-- Asymmetric Deco element -->
+<div class="absolute -bottom-6 -right-6 w-32 h-32 bg-primary-container -z-10 opacity-20"></div>
+</div>
+</div>
+</section>
+<!-- Expertise Section (About Me) -->
+<section class="py-32 bg-surface-container-low" id="expertise">
+<div class="max-w-7xl mx-auto px-8">
+<div class="grid md:grid-cols-2 gap-24 items-start">
+<div>
+<span class="text-on-surface-variant font-label text-xs uppercase tracking-[0.3em] mb-4 block">Chuyên Gia Tại Hồ Chí Minh</span>
+<h2 class="font-headline text-4xl font-bold text-primary mb-8 leading-tight">
+                            Hơn cả công nghệ. <br/>Chúng tôi xây dựng niềm tin.
+                        </h2>
+<div class="space-y-6 text-on-surface-variant leading-relaxed">
+<p>
+                                Tọa lạc tại trái tim kinh tế Hồ Chí Minh, chúng tôi hiểu rõ nhịp đập và những thách thức đặc thù của thị trường tài chính Việt Nam. Editorial Intelligence không chỉ cung cấp công cụ; chúng tôi thiết kế những hệ sinh thái số hóa thông minh.
+                            </p>
+<p class="italic font-light">
+                                "Sứ mệnh của tôi là chuyển đổi dữ liệu kế toán khô khan thành những tài sản chiến lược giúp doanh nghiệp bứt phá."
+                            </p>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest p-8 shadow-sm">
+<h3 class="text-3xl font-bold text-primary mb-2">10+</h3>
+<p class="text-xs font-semibold uppercase tracking-wider text-outline">Năm Kinh Nghiệm</p>
+</div>
+<div class="bg-primary p-8 shadow-sm">
+<h3 class="text-3xl font-bold text-on-primary mb-2">50+</h3>
+<p class="text-xs font-semibold uppercase tracking-wider text-emerald-200">Dự Án AI</p>
+</div>
+<div class="col-span-2 bg-emerald-900 p-8 shadow-sm">
+<div class="flex items-center gap-4 mb-4">
+<span class="material-symbols-outlined text-emerald-400" style="font-variation-settings: 'FILL' 1;">location_on</span>
+<span class="text-white font-bold">Hồ Chí Minh City, Vietnam</span>
+</div>
+<p class="text-emerald-100/60 text-sm">Am hiểu sâu sắc hệ thống chuẩn mực kế toán (VAS) và các quy định tài chính hiện hành.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Services Section -->
+<section class="py-32" id="solutions">
+<div class="max-w-7xl mx-auto px-8">
+<div class="mb-20">
+<h2 class="font-headline text-4xl font-bold text-primary mb-4">Giải Pháp Đặc Quyền</h2>
+<div class="h-1 w-20 bg-primary-container"></div>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<!-- Service 1 -->
+<div class="group bg-surface-container p-10 hover:bg-primary transition-all duration-500 rounded-sm">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-primary-fixed mb-8 block">account_balance_wallet</span>
+<h3 class="font-headline text-xl font-bold mb-4 group-hover:text-white transition-colors">AI Cho Kế Toán</h3>
+<p class="text-on-surface-variant group-hover:text-emerald-100/80 transition-colors leading-relaxed">
+                            Tự động hóa xử lý chứng từ, hóa đơn với độ chính xác 99.9%. Giảm thiểu 70% thời gian nhập liệu thủ công.
+                        </p>
+</div>
+<!-- Service 2 -->
+<div class="group bg-surface-container p-10 hover:bg-primary transition-all duration-500 rounded-sm">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-primary-fixed mb-8 block">monitoring</span>
+<h3 class="font-headline text-xl font-bold mb-4 group-hover:text-white transition-colors">Phân Tích Tài Chính</h3>
+<p class="text-on-surface-variant group-hover:text-emerald-100/80 transition-colors leading-relaxed">
+                            Dự báo dòng tiền và xu hướng thị trường dựa trên Machine Learning. Ra quyết định dựa trên dữ liệu thực tế.
+                        </p>
+</div>
+<!-- Service 3 -->
+<div class="group bg-surface-container p-10 hover:bg-primary transition-all duration-500 rounded-sm">
+<span class="material-symbols-outlined text-4xl text-primary group-hover:text-primary-fixed mb-8 block">security</span>
+<h3 class="font-headline text-xl font-bold mb-4 group-hover:text-white transition-colors">Tư Vấn Chiến Lược AI</h3>
+<p class="text-on-surface-variant group-hover:text-emerald-100/80 transition-colors leading-relaxed">
+                            Thiết kế lộ trình chuyển đổi số toàn diện cho phòng tài chính. Tối ưu hóa chi phí vận hành bằng AI.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Bento Grid -->
+<section class="py-32 bg-surface" id="portfolio">
+<div class="max-w-7xl mx-auto px-8">
+<div class="flex justify-between items-end mb-16">
+<div>
+<span class="text-on-surface-variant font-label text-xs uppercase tracking-[0.3em] mb-4 block">Dự Án Tiêu Biểu</span>
+<h2 class="font-headline text-4xl font-bold text-primary">Danh Mục Portfolio</h2>
+</div>
+<a class="text-primary font-bold border-b border-primary pb-1 hover:opacity-70" href="#">Tất cả dự án</a>
+</div>
+<div class="grid md:grid-cols-4 md:grid-rows-2 gap-4 h-[800px]">
+<div class="md:col-span-2 md:row-span-2 relative group overflow-hidden bg-emerald-900">
+<img alt="Financial Dashboard AI" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-transform duration-700" data-alt="Clean futuristic financial dashboard interface with emerald green charts and data visualizations on a dark glass surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBC_iS2VxMKSPAS0yuFCYYtkeoELCaiQaSycDN8FhAd0cpjUOjeqS03FryyVpckSJ-IP3MHO4XFXpCVaqY674Boa5xYKKAVW4R8GmniEuKUWIc22TBMyYOakuLsGTTheWgV4b-OXQsZyR4xzyOB3DHYxZaYb4NJt0CwZFo64nhHYPK1vjUCq0QbcfY6FHqzlbBrUygX3X8fGEQssX4PeNiAUzu6Iq54U9pmOuLSIHowh7ioGAmHEEbvhgFAIPerIdKhRQLECdv2fJE"/>
+<div class="absolute inset-0 p-12 flex flex-col justify-end bg-gradient-to-t from-primary to-transparent">
+<span class="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-2">Phân Tích Dữ Liệu</span>
+<h3 class="text-white text-3xl font-headline font-bold">SmartFin Predictor v2</h3>
+</div>
+</div>
+<div class="md:col-span-2 md:row-span-1 relative group overflow-hidden bg-emerald-800">
+<img alt="Automated Accounting" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" data-alt="Minimalist desktop workspace with a digital tablet showing accounting software and a cup of green tea, bright airy mood" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCC69srj79YIJ-MCVJu16AliVVJXNkLkcyPWEEr08vm_Oc291cht_8fK_1guBDtkHUBVsOoYkXYwN7_8ydt6AlMjeMMtKjkKHvtblGPMY1-E36YyvHp7oXwT0osEks4SCHtassbBbm5p9RlVdXXr2V8XopQU7EINe06WYALwkmR2hVMZehg9l8_IAmvPKXo0L0aawHoe8PT5jvwh9PnhjOMXZ9KPoIsejUyfO8Lg6iPm_p6Sbtnretz2XLTx8D8W1dCxtTX__DY0Ko"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end bg-gradient-to-t from-primary/80 to-transparent">
+<span class="text-emerald-300 text-xs font-bold uppercase tracking-widest mb-2">Tự Động Hóa</span>
+<h3 class="text-white text-xl font-headline font-bold">Hệ Thống Thuế Tự Động</h3>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-emerald-950">
+<img alt="AI Strategy" class="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-700" data-alt="Abstract network of interconnected green light lines on a black background representing artificial intelligence connectivity" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBNe_7vg54v8U2JxmMVWVW_n_2W9-sn-1tD_0bJYzrgl-RAHebKc0qvxniEGIIVeB47tY4qbxcCS2fsMOJxjvEc82MM5BtLlL6sCRDxhpIhIjbnQZwCQGHEqZOySpvvYR1rbe3MffxiIIQY7aEs6WMu_GJCYMdVNJnG2VbG5fgqGTrZMSKu9F56t-zWzugT54lwxs5PqGTOlKlHni9nNGL4wz_8VGHYRfbDesSAxzwvf3NcGhKwVrjPIFZwqHec5OOCQ0qtONwMgnA"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="text-emerald-400 text-xs font-bold uppercase tracking-widest mb-2">Chiến Lược</span>
+<h3 class="text-white text-lg font-headline font-bold">AI Roadmap 2024</h3>
+</div>
+</div>
+<div class="md:col-span-1 md:row-span-1 relative group overflow-hidden bg-emerald-700">
+<img alt="Consultancy" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-700" data-alt="Modern office meeting room with emerald green velvet chairs and large windows looking over a city skyline at dusk" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-LrL1iFk7C_Rwg-HVEIDV-dcfuBrh5kt1CyHjVwPklQ2v9FQO1efHOrk0PG7yG1BDc459tfLQ1Zq4DNY66UjQvmKXCsVEPACVOhlTWx-egd17cEZvB2HQvZZSozeQxH4k4eVw7lsfC_8Y9Sq7mT8K5HtOOPbOqYrNotPmw18bpROLX2F3LKrpbQvCyOAiFGPh3GMUJ4It-fFmK9WQv4-LiRAkGqwOMmd83L4AnJt1EB6_0vG6m82zFtgyADAEdaiQxRtLjfu1QeE"/>
+<div class="absolute inset-0 p-8 flex flex-col justify-end">
+<span class="text-emerald-200 text-xs font-bold uppercase tracking-widest mb-2">Tư Vấn</span>
+<h3 class="text-white text-lg font-headline font-bold">V-Private Banking</h3>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Contact Section -->
+<section class="py-32 bg-white" id="contact">
+<div class="max-w-7xl mx-auto px-8 grid md:grid-cols-12 gap-16">
+<div class="md:col-span-5">
+<h2 class="font-headline text-4xl font-bold text-primary mb-6">Bắt đầu hành trình AI của bạn ngay hôm nay.</h2>
+<p class="text-on-surface-variant mb-12">Sẵn sàng để đưa hệ thống tài chính của bạn lên một tầm cao mới? Hãy để lại thông tin, tôi sẽ phản hồi trong vòng 24 giờ làm việc.</p>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-widest">Email</p>
+<p class="text-primary font-semibold">contact@editorial-intelligence.vn</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-surface-container flex items-center justify-center rounded-sm">
+<span class="material-symbols-outlined text-primary">call</span>
+</div>
+<div>
+<p class="text-xs font-bold text-outline uppercase tracking-widest">Phone</p>
+<p class="text-primary font-semibold">+84 (0) 90 123 4567</p>
+</div>
+</div>
+</div>
+</div>
+<div class="md:col-span-7">
+<form class="space-y-6">
+<div class="grid grid-cols-2 gap-6">
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Họ và Tên</label>
+<input class="w-full bg-surface-container-low border-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-surface-tint p-4 rounded-sm" placeholder="Nguyễn Văn A" type="text"/>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email Công Ty</label>
+<input class="w-full bg-surface-container-low border-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-surface-tint p-4 rounded-sm" placeholder="email@company.com" type="email"/>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Loại Dịch Vụ</label>
+<select class="w-full bg-surface-container-low border-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-surface-tint p-4 rounded-sm">
+<option>AI Cho Kế Toán</option>
+<option>Phân Tích Tài Chính</option>
+<option>Tư Vấn Chiến Lược</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold uppercase tracking-widest text-on-surface-variant">Tin Nhắn</label>
+<textarea class="w-full bg-surface-container-low border-none focus:bg-surface-container-lowest focus:ring-1 focus:ring-surface-tint p-4 rounded-sm" placeholder="Mô tả ngắn gọn nhu cầu của bạn..." rows="4"></textarea>
+</div>
+<button class="w-full bg-primary text-on-primary font-bold py-5 rounded-sm hover:opacity-95 transition-all uppercase tracking-widest" type="submit">
+                            Gửi Yêu Cầu Tư Vấn
+                        </button>
+</form>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-emerald-900 dark:bg-emerald-950 w-full py-12 px-8 tonal-shift-from-surface">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 max-w-7xl mx-auto">
+<div class="text-lg font-bold text-white">Editorial Intelligence</div>
+<p class="font-be-vietnam-pro text-xs tracking-wide uppercase text-emerald-400/80">
+                © 2024 Editorial Intelligence. Bespoke AI for the Sovereign Architect. Hồ Chí Minh City.
+            </p>
+<div class="flex gap-8">
+<a class="font-be-vietnam-pro text-xs tracking-wide uppercase text-emerald-400/80 hover:text-white underline-offset-4 underline transition-opacity" href="#">Privacy Policy</a>
+<a class="font-be-vietnam-pro text-xs tracking-wide uppercase text-emerald-400/80 hover:text-white underline-offset-4 underline transition-opacity" href="#">Terms of Service</a>
+<a class="font-be-vietnam-pro text-xs tracking-wide uppercase text-emerald-400/80 hover:text-white underline-offset-4 underline transition-opacity" href="#">LinkedIn</a>
+<a class="font-be-vietnam-pro text-xs tracking-wide uppercase text-emerald-400/80 hover:text-white underline-offset-4 underline transition-opacity" href="#contact">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>
